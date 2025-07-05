@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'names.dart';
+import 'package:word_generator/word_generator.dart';
 
 void main() {
   print('Dart Collections Journey');
@@ -9,6 +10,9 @@ void main() {
   
   print('\n------------------- Task 2 -------------------');
   runTask2();
+  
+  print('\n------------------- Task 3 -------------------');
+  runTask3();
 }
 
 void runTask1() {
@@ -62,4 +66,24 @@ void runTask2() {
   final Set<String> uniqueToSecond = uniqueNames2.difference(uniqueNames1);
   print('Імена, що є тільки в другому списку (${uniqueToSecond.length}):');
   print(uniqueToSecond);
+}
+
+void runTask3() {
+  final wordGenerator = WordGenerator();
+  final List<String> nounsList = wordGenerator.randomNouns(50);  
+  final Map<String, int> nounsMap = {};
+  for (String noun in nounsList) {
+    nounsMap[noun] = noun.length;
+  }
+
+  final Map<String, int> tempNouns = {};
+  
+  nounsMap.forEach((key, value) {
+    if (value % 2 == 0) {
+      tempNouns[key] = value;
+    }
+  });
+  
+  print('\nКлючі зі словника tempNouns:');
+  print(tempNouns.keys.toList());
 }
