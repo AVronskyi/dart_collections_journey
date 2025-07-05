@@ -1,10 +1,14 @@
 import 'dart:math';
+import 'names.dart';
 
 void main() {
   print('Dart Collections Journey');
   
   print('------------------- Task 1 -------------------');
   runTask1();
+  
+  print('\n------------------- Task 2 -------------------');
+  runTask2();
 }
 
 void runTask1() {
@@ -38,4 +42,24 @@ void runTask1() {
   }
   
   print('Довжина списку temp: ${temp.length}');
+}
+
+void runTask2() {
+  final Set<String> uniqueNames1 = ukrainianNames1.toSet();
+  print('Кількість унікальних імен у першому списку: ${uniqueNames1.length}');
+  
+  final Set<String> uniqueNames2 = ukrainianNames2.toSet();
+  print('Кількість унікальних імен у другому списку: ${uniqueNames2.length}');
+  
+  final Set<String> commonNames = uniqueNames1.intersection(uniqueNames2);
+  print('Кількість спільних імен: ${commonNames.length}');
+  print('Спільні імена: $commonNames');
+  
+  final Set<String> uniqueToFirst = uniqueNames1.difference(uniqueNames2);
+  print('Імена, що є тільки в першому списку (${uniqueToFirst.length}):');
+  print(uniqueToFirst);
+  
+  final Set<String> uniqueToSecond = uniqueNames2.difference(uniqueNames1);
+  print('Імена, що є тільки в другому списку (${uniqueToSecond.length}):');
+  print(uniqueToSecond);
 }
